@@ -1,0 +1,13 @@
+cmake_minimum_required (VERSION 3.20)
+
+set(VST3SDK_ROOT_DIR ../VST_SDK/vst3sdk)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+list(APPEND CMAKE_MODULE_PATH "${VST3SDK_ROOT_DIR}/cmake/modules")
+
+include(SMTG_VST3_SDK)
+
+project(Vesty)
