@@ -1,9 +1,9 @@
 #!/bin/sh
 
-BUILD_DIRECTORY_NAME=build.xcode
+BUILD_DIRECTORY_NAME=.build.xcode
 
 rm -fr ${BUILD_DIRECTORY_NAME}
 mkdir ${BUILD_DIRECTORY_NAME}
 
 cmake -GXcode . -B ${BUILD_DIRECTORY_NAME} -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
-open ${BUILD_DIRECTORY_NAME}/vstsdk.xcodeproj
+open ${BUILD_DIRECTORY_NAME}/Vesty.xcodeproj
