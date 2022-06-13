@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.19)
+cmake_minimum_required(VERSION 3.19)
 
 #-------------------------------------------------------------------------------
 # Common settings
@@ -69,8 +69,9 @@ target_link_libraries(${target}
 #-------------------------------------------------------------------------------
 # AUv3 settings
 #-------------------------------------------------------------------------------
-if(SMTG_MAC AND SMTG_COREAUDIO_SDK_PATH)
+if(SMTG_MAC)
     include(SMTG_AddVST3AuV3)
+
     add_subdirectory("${SDK_ROOT}/public.sdk/source/vst/auv3wrapper" auv3wrapper)
 
     smtg_target_set_bundle(${target} INFOPLIST "${CMAKE_CURRENT_LIST_DIR}/resource/Info.plist" PREPROCESS)
