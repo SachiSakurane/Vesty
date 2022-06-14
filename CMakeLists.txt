@@ -22,11 +22,12 @@ get_filename_component(SDK_ROOT "${VST3SDK_DIR}" ABSOLUTE)
 
 # used for pluginterfaces and public.sdk modules which provides only a subset of them for VST-SDK
 set(VST_SDK TRUE)
-
-# for SMTG_AddVST3AuV3
 set(SMTG_ADD_VSTGUI ON)
+
+# for smtg_enable_vst3_sdk
 set(vst3sdk_SOURCE_DIR "${SDK_ROOT}")
 
+# install sdk cmake modules
 list(APPEND CMAKE_MODULE_PATH "${SDK_ROOT}/cmake/modules")
 
 include(SMTG_VST3_SDK)
@@ -35,6 +36,7 @@ smtg_setup_platform_toolset()
 smtg_enable_vst3_sdk()
 setupCoreAudioSupport()
 
+# for SMTG_AddVST3AuV3
 if(SMTG_ADD_VSTGUI)
     set(SMTG_VSTGUI_ROOT "${SDK_ROOT}")
     smtg_enable_vstgui_support()
@@ -71,10 +73,12 @@ target_link_libraries(${target}
 #-------------------------------------------------------------------------------
 if(SMTG_MAC)
     include(SMTG_AddVST3AuV3)
-
     add_subdirectory("${SDK_ROOT}/public.sdk/source/vst/auv3wrapper" auv3wrapper)
 
-    smtg_target_set_bundle(${target} INFOPLIST "${CMAKE_CURRENT_LIST_DIR}/resource/Info.plist" PREPROCESS)
+    smtg_target_set_bundle(${target}
+        INFOPLIST "${CMAKE_CURRENT_LIST_DIR}/resource/Info.plist"
+        PREPROCESS
+    )
 
     set(vesty_mac_app_sources
         "macOS/Sources/ViewController.m"
